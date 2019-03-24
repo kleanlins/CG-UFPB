@@ -90,7 +90,7 @@ void mouseAction(int button, int state, int x, int y){
                 // printf("x: %d -- y: %d", x, y);
                 posX = x;
                 posY = sizeY - y;
-                printf("%d\n", posY);
+                printf("X:%d Y:%d\n", posX, posY);
                 break;
         }
     }
