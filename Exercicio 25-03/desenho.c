@@ -3,6 +3,8 @@
 
 void SOMETHING();
 
+int angle = 10;
+
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
@@ -16,27 +18,26 @@ int main(int argc, char *argv[])
 
 void SOMETHING(){
 
-    glClearColor(1,0,0,1);              // COR DE LIMPEZA DA TELA
+    glClearColor(0,0,0,1);              // COR DE LIMPEZA DA TELA
     glClear(GL_COLOR_BUFFER_BIT);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0.0,100.0,0.0,100.0);
+    gluOrtho2D(-100.0,100.0,-100.0,100.0);
 
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    //glLoadIdentity();
 
-    glColor3d(0,0,0);
+    glColor3d(1,1,1);
 
-    //UPPER BODY
+    glRotated(angle, 0, 0, 1);
+
     glBegin(GL_POLYGON);
 
-        glVertex2i(48,65); //left top
-        glVertex2i(43,57); //left
-        glVertex2i(43,50); //left bottom
-        glVertex2i(57,50); //right bottom
-        glVertex2i(57,57); //right 
-        glVertex2i(52,65); //right top
+        glVertex2i(10,70); //left top
+        glVertex2i(10,10); //left bottom
+        glVertex2i(70,10); //right bottom
+        glVertex2i(70,70); //right top
 
     glEnd();
 
