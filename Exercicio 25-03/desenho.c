@@ -4,7 +4,7 @@
 void SOMETHING();
 
 int angle = 10;
-int run = 0;
+int run = 1;
 
 void arrowsAction(int key, int x, int y);
 
@@ -22,10 +22,12 @@ int main(int argc, char *argv[])
 }
 
 void SOMETHING(){
-
-    glClearColor(0,0,0,1);              // COR DE LIMPEZA DA TELA
-    glClear(GL_COLOR_BUFFER_BIT);
-
+    
+    if(run){
+        glClearColor(0,0,0,1);              // COR DE LIMPEZA DA TELA
+        glClear(GL_COLOR_BUFFER_BIT);
+        run = 0;
+    }
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(-100.0,100.0,-100.0,100.0);
@@ -34,10 +36,7 @@ void SOMETHING(){
     //glLoadIdentity();
     glColor3d(1,1,1);
 
-    if(run != 0){
-        glPopMatrix();
-        glLoadIdentity();
-    }
+    int i = 0;
 
     glRotated(angle, 0, 0, 1);
     glBegin(GL_POLYGON);
@@ -46,9 +45,6 @@ void SOMETHING(){
         glVertex2i(70,10); //right bottom
         glVertex2i(70,70); //right top
     glEnd();
-
-    glPushMatrix();
-    run++;
 
     glFlush();
 }
