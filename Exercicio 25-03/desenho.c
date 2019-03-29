@@ -5,6 +5,7 @@ void SOMETHING();
 
 int angle = 10;
 int run = 1;
+int colorToChange = 1;
 
 void arrowsAction(int key, int x, int y);
 
@@ -34,7 +35,7 @@ void SOMETHING(){
 
     glMatrixMode(GL_MODELVIEW);
     //glLoadIdentity();
-    glColor3d(1,1,1);
+    glColor3d(colorToChange,1,1);
 
     int i = 0;
 
@@ -45,6 +46,8 @@ void SOMETHING(){
         glVertex2i(70,10); //right bottom
         glVertex2i(70,70); //right top
     glEnd();
+
+    colorToChange += 10;
 
     glFlush();
 }
