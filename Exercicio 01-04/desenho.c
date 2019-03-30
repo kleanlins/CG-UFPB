@@ -5,9 +5,6 @@ int firstRun = 1;
 int runToSide = 0;
 int upOrDown = 0;
 
-void init(){
-}
-
 void renderSomething(){
 
     glClearColor(0,0,0,1);
@@ -52,32 +49,6 @@ void renderSomething(){
     glFlush();
 }
 
-void renderSomethingElse(){
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-100.0,100.0,-100.0,100.0, -100, 100);
-
-    glMatrixMode(GL_MODELVIEW);
-
-    if(firstRun){
-
-        glClearDepth(1.0f);
-        glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LEQUAL);
-
-        glRotated(90, 1, 0, 0);
-        firstRun = 0;
-
-    }
-
-    glColor3d(1,1,0);
-    glutWireSphere(18, 10, 10);
-    glRotated(runToSide, 0, 0, 1);
-
-    glFlush();
-}
-
 void arrowsAction(int key, int x, int y){
     switch(key){
         case GLUT_KEY_RIGHT:
@@ -106,10 +77,7 @@ int main(int argc, char *argv[])
     glutInitWindowSize(500, 500);
     glutCreateWindow("Cleanderson Lins");
 
-    init();
-
     glutDisplayFunc(renderSomething);
-//    glutDisplayFunc(renderSomethingElse);
 
     glutSpecialFunc(arrowsAction);
 
