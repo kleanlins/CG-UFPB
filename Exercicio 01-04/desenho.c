@@ -27,7 +27,7 @@ void drawAxis(){
 }
 
 void renderSomething(){
-    glClearColor(0,0,0,1);
+    glClearColor(1,1,1,1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_PROJECTION);
@@ -56,7 +56,7 @@ void renderSomething(){
     glRotated(10, 0, 0, 1);
     // PLOT EARTH
     glColor3d(0,1,1);
-    glutWireSphere(5, 10, 10);
+    glutSolidSphere(5, 10, 10);
     glTranslated(-80, 0, 0);
     
     glPopMatrix();
@@ -71,11 +71,11 @@ void renderSomething(){
 void arrowsAction(int key, int x, int y){
     switch(key){
         case GLUT_KEY_RIGHT:
-            leftOrRight = 10;
+            leftOrRight = 5;
             glutPostRedisplay();
             break;
         case GLUT_KEY_LEFT:
-            leftOrRight = -10;
+            leftOrRight = -5;
             glutPostRedisplay();
             break;
         case GLUT_KEY_UP:
