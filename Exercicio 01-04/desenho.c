@@ -32,9 +32,12 @@ void renderSomething(){
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-100.0,100.0,-100.0,100.0, -100, 100);
 
+    //gluPerspective(30, 1280/720, 1.0, 100.0);
+    glOrtho(-100.0,100.0,-100.0,100.0, -100, 100);
     glMatrixMode(GL_MODELVIEW);
+    //glLoadIdentity();
+    //gluLookAt(0, 0, -10, 0, 0, 0, 0, 1, 0);
 
     drawAxis();
 
@@ -45,11 +48,7 @@ void renderSomething(){
         glRotated(90, 1, 0, 0);
         firstRun = 0;
     }
-
-    if(upOrDown){
-        glRotated(upOrDown, 0, 1, 0);
-        upOrDown = 0;
-    }
+ 
 
     glPushMatrix();
     glTranslated(80, 0, 0);
@@ -71,19 +70,19 @@ void renderSomething(){
 void arrowsAction(int key, int x, int y){
     switch(key){
         case GLUT_KEY_RIGHT:
-            leftOrRight = 5;
+            glRotated(10, 0, 0, 1);
             glutPostRedisplay();
             break;
         case GLUT_KEY_LEFT:
-            leftOrRight = -5;
+            glRotated(-10, 0, 0, 1);
             glutPostRedisplay();
             break;
         case GLUT_KEY_UP:
-            upOrDown = 10;
+            glRotated(10, 0, 1, 0);
             glutPostRedisplay();
             break;
         case GLUT_KEY_DOWN:
-            upOrDown = -10;
+            glRotated(-10, 0, 1, 0);
             glutPostRedisplay();
             break;
     }
