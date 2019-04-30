@@ -3,14 +3,17 @@
 
 class Obstacle{
 public:
+    
+    int position;
+    int width, height;
 
-    int scale;
-
-    Obstacle(int s): scale(s){
-
-    }
+    Obstacle(int p):
+        position(p),
+        width(40){}
 
     void draw();
+    void move();
+    void reset();
 
 };
 

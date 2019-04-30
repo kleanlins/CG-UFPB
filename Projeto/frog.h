@@ -4,12 +4,17 @@
 class Frog {
 public:
 
-    int scale;
+    float scale;
+    float x, y;
 
-    Frog(int s): scale(s){}
+    Frog(float s): scale(s){
+        this->x = 100 * this->scale;
+        this->y = 350 * this->scale;
+    }
 
     void draw();
-
+    void jump();
+    void fall();
 };
 
 

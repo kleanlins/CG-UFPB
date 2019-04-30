@@ -121,10 +121,6 @@ void mouse(int btn,int state,int x,int y)
 	glutPostRedisplay();
 }
 
-void keyboard(){
-    
-}
-
 int main(int argc, char** argv)
 { 
 	glutInit(&argc, argv);
