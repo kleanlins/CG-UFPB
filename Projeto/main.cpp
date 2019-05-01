@@ -1,20 +1,16 @@
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 // user made models
-#include "frog.h"
+#include "gameconf.h"
+#include "skater.h"
 #include "obstacle.h"
 
-// performance metrics
-int fps = 60;
-
-// main variables
-int width = 400;
-int height = 600;
-
-Frog frog(1);
-Obstacle obstacle(width);
+Skater skater(1);
+Obstacle obstacle(-130);
 
 void drawAxis(){
     glColor3f(1, 0, 0);
@@ -38,18 +34,12 @@ void drawAxis(){
 
 
 void display(){
-
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
 
     drawAxis();
 
-    glColor3f(1.0, 1.0, 1.0);
-    glBegin(GL_TRIANGLES);
-        glVertex2d(40, 40);
-        glVertex2d(40, 70);
-        glVertex2d(70, 40);
-    glEnd();
+    skater.draw();
     
     glFlush();
 }
@@ -59,18 +49,24 @@ void init(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-width/2, width/2, -height/2, height/2, -1.0, 0.0);
+
 }
 
-// redisplay makes the screen update itself after a predefined time.
-void redisplay(){
-    glRotated(0.1, 0, 0, 1);
+// update makes the screen update itself after a predefined time.
+void update(){
+    // glRotated(0.1, 0, 0, 1);
+    skater.jump();
     glutPostRedisplay();
+    std::this_thread::sleep_for(std::chrono::milliseconds(17));
 }
 
 void keyboard(unsigned char k, int x, int y){
     switch(k){
         case 's':
-            glutIdleFunc(redisplay);
+            glutIdleFunc(update);
+            break;
+        case 'd':
+            glutIdleFunc(NULL);
             break;
         case 'q':
             exit(0);
@@ -82,8 +78,8 @@ int main(int argc, char **argv){
     glutInit(&argc, argv);
     glutInitDisplayMode( GLUT_SINGLE );
     glutInitWindowSize(width, height);
-    glutInitWindowPosition(300,100);
-    glutCreateWindow("Froggy");
+    glutInitWindowPosition(1920 + 300,100);
+    glutCreateWindow("Skater");
     init();
 
     glutDisplayFunc(display);

@@ -2,19 +2,16 @@
 #define _OBSTACLE_H_
 
 class Obstacle{
-public:
-    
+private:
     int position;
-    int width, height;
+    int w, h;
 
-    Obstacle(int p):
-        position(p),
-        width(40){}
+public:
+    Obstacle(int p);
 
     void draw();
     void move();
     void reset();
-
 };
 
 #endif // _OBSTACLE_H_
