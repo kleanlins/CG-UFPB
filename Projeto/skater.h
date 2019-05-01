@@ -8,7 +8,7 @@ private:
     int type; // selects one of the three available skater types
     float x, y;
 
-    int jump_size;
+    int jump_force;
     int velocity;
     int radius;
 
@@ -21,7 +21,8 @@ public:
     void draw();
     void run();
     void jump();
-    void fall();
+
+    void update();
 };
 
 #endif // _SKATER_H_

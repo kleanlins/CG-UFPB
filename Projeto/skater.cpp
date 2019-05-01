@@ -5,10 +5,10 @@
 
 Skater::Skater(int t) : type(t){
 
-    y = 200;
+    y = ground;
     x = -130;
 
-    jump_size = 50;
+    jump_force = 15;
     velocity = 0;
     radius = 5;
 
@@ -33,11 +33,22 @@ void Skater::run(){
 }
 
 void Skater::jump(){
-    if(y > ground)
-        velocity += gravity;
-        y += velocity;
+    velocity += -gravity * jump_force;
 }
 
-void Skater::fall(){
-    
+void Skater::update(){
+    velocity += gravity;
+    y += velocity;
+
+    if(y > height/2){
+        y = height/2 - radius;
+        velocity = 0;
+    }
+
+    std::cout << y << " " << velocity << std::endl;    
+
+    if(y <= ground){
+        y = ground;
+        velocity = 1;
+    }
 }

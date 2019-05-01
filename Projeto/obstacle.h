@@ -3,11 +3,13 @@
 
 class Obstacle{
 private:
-    int position;
+    int x, y;
     int w, h;
 
+    int speed;
+
 public:
-    Obstacle(int p);
+    Obstacle();
 
     void draw();
     void move();

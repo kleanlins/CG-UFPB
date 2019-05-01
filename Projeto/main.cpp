@@ -10,7 +10,7 @@
 #include "obstacle.h"
 
 Skater skater(1);
-Obstacle obstacle(-130);
+Obstacle obstacle;
 
 void drawAxis(){
     glColor3f(1, 0, 0);
@@ -40,6 +40,7 @@ void display(){
     drawAxis();
 
     skater.draw();
+    obstacle.draw();
     
     glFlush();
 }
@@ -54,19 +55,19 @@ void init(){
 
 // update makes the screen update itself after a predefined time.
 void update(){
-    // glRotated(0.1, 0, 0, 1);
-    skater.jump();
+    skater.update();
+    obstacle.move();
     glutPostRedisplay();
     std::this_thread::sleep_for(std::chrono::milliseconds(17));
 }
 
 void keyboard(unsigned char k, int x, int y){
     switch(k){
-        case 's':
+        case 'W':
+        case 'w':
+            std::cout << "JUMP\n";
+            skater.jump();
             glutIdleFunc(update);
-            break;
-        case 'd':
-            glutIdleFunc(NULL);
             break;
         case 'q':
             exit(0);
