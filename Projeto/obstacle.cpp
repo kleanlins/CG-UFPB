@@ -5,10 +5,10 @@
 
 Obstacle::Obstacle():
     x(200),
-    w(40),
-    h(100){
+    w(10),
+    h(50){
         y = 100;
-        speed = 10;
+        speed = 2;
     }
 
 void Obstacle::draw(){
@@ -22,9 +22,10 @@ void Obstacle::draw(){
 }
 
 void Obstacle::move(){
-
-
-
+    x -= speed;
+    if(x < -(width/2) - w/2){
+        x = width/2;
+    }
 }
 
 void Obstacle::reset(){
