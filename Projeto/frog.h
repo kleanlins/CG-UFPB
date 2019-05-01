@@ -13,6 +13,7 @@ public:
     }
 
     void draw();
+    void walk();
     void jump();
     void fall();
 };

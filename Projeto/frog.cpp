@@ -4,6 +4,10 @@ void Frog::draw(){
     
 }
 
+void Frog::walk(){
+    
+}
+
 void Frog::jump(){
 
 }
