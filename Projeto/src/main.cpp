@@ -32,7 +32,6 @@ void drawAxis(){
     glEnd();
 }
 
-
 void display(){
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -79,7 +78,7 @@ int main(int argc, char **argv){
     glutInit(&argc, argv);
     glutInitDisplayMode( GLUT_SINGLE );
     glutInitWindowSize(width, height);
-    glutInitWindowPosition(1920 + 300,100);
+    glutInitWindowPosition(300,100);
     glutCreateWindow("Skater");
     init();
 
@@ -87,5 +86,4 @@ int main(int argc, char **argv){
     glutKeyboardFunc(keyboard);
 
     glutMainLoop();
-
 }
