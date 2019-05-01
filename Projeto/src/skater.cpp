@@ -13,7 +13,6 @@ Skater::Skater(int t) : type(t){
     radius = 5;
 
     std::cout << "Skater created.\n" ;
-
 }
 
 void Skater::draw(){
@@ -45,7 +44,7 @@ void Skater::update(){
         velocity = 0;
     }
 
-    std::cout << y << " " << velocity << std::endl;    
+    // std::cout << y << "\t" << velocity << std::endl;
 
     if(y <= ground){
         y = ground;

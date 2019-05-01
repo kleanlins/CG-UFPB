@@ -11,4 +11,3 @@ find_package(GLUT REQUIRED)
 include_directories( ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} )
 
 target_link_libraries( skater OpenGL ${GLUT_LIBRARY} )
-

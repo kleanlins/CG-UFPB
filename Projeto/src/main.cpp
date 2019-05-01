@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "utils.h"
 
 // user made models
 #include "gameconf.h"
@@ -11,26 +12,6 @@
 
 Skater skater(1);
 Obstacle obstacle;
-
-void drawAxis(){
-    glColor3f(1, 0, 0);
-    glBegin(GL_LINES);
-        glVertex3f(0, 0, 0);
-        glVertex3f(100, 0, 0);
-    glEnd();
-
-    glColor3f(0, 1, 0);
-    glBegin(GL_LINES);
-        glVertex3f(0, 0, 0);
-        glVertex3f(0, 100, 0);
-    glEnd();
-
-    glColor3f(0, 0, 1);
-    glBegin(GL_LINES);
-        glVertex3f(0, 0, 0);
-        glVertex3f(0, 0, 100);
-    glEnd();
-}
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT);

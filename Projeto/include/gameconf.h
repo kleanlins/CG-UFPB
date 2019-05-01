@@ -10,6 +10,6 @@ const int height = 600;
 
 const int ground = -130;
 
-const int gravity = -1;
+const float gravity = -0.25;
 
 #endif // _GAMECONF_H_

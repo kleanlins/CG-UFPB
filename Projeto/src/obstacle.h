@@ -4,7 +4,7 @@
 class Obstacle{
 private:
     int x, y;
-    int w, h;
+    int w, ht;
 
     int speed;
 

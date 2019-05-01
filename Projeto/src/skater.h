@@ -8,12 +8,9 @@ private:
     int type; // selects one of the three available skater types
     float x, y;
 
-    int jump_force;
-    int velocity;
-    int radius;
-
-    bool jumping;
-
+    float jump_force;
+    float velocity;
+    float radius;
 
 public:
     Skater(int t);
