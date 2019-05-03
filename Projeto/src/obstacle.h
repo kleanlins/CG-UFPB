@@ -3,13 +3,15 @@
 
 class Obstacle{
 private:
-    int x, y;
-    int w, ht;
+    int x;
+    int w, upper_pipe_height, bottom_pipe_height;
+
+    int difficulty[3] = {100, 70, 50};
 
     int speed;
 
 public:
-    Obstacle();
+    Obstacle(int position);
 
     void draw();
     void move();

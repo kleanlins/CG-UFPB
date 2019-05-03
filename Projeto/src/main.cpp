@@ -11,7 +11,9 @@
 #include "obstacle.h"
 
 Skater skater(1);
-Obstacle obstacle;
+Obstacle obstacle(200);
+Obstacle obstacle2(328);
+Obstacle obstacle3(456);
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT);
@@ -21,6 +23,8 @@ void display(){
 
     skater.draw();
     obstacle.draw();
+    obstacle2.draw();
+    obstacle3.draw();
     
     glFlush();
 }
@@ -37,6 +41,8 @@ void init(){
 void update(){
     skater.update();
     obstacle.move();
+    obstacle2.move();
+    obstacle3.move();
     glutPostRedisplay();
     std::this_thread::sleep_for(std::chrono::milliseconds(17));
 }

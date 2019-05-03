@@ -5,22 +5,39 @@
 #include "gameconf.h"
 #include "obstacle.h"
 
-Obstacle::Obstacle():
-    x(200),
-    w(10),
-    ht(100){
-        y = 100;
+Obstacle::Obstacle(int position):
+    x(position),
+    w(10){
         speed = 2;
-        srand( time(NULL) );
+        srand( position );
+
+        int min, max;
+
+        min = 50;
+        max = (height + ground) * 0.7;
+        bottom_pipe_height = std::rand() % (max - min) + min;
+
+        min = (height + ground) - (bottom_pipe_height + 2*difficulty[0]);
+        max = (height + ground) - (bottom_pipe_height + difficulty[0]);
+        upper_pipe_height = std::rand() % (max - min) + min;
+
     }
 
 void Obstacle::draw(){
-    glBegin(GL_QUADS);
         glColor3f(1.0, 0.0, 0.0);
+
+    glBegin(GL_QUADS);
         glVertex3f(x-w, ground, 0);
-        glVertex3f(x-w, ground+ht, 0);
-        glVertex3f(x+w, ground+ht, 0);
+        glVertex3f(x-w, ground+bottom_pipe_height, 0);
+        glVertex3f(x+w, ground+bottom_pipe_height, 0);
         glVertex3f(x+w, ground, 0);
+    glEnd();
+
+    glBegin(GL_QUADS);
+        glVertex3f(x-w, sky, 0);
+        glVertex3f(x-w, sky-upper_pipe_height, 0);
+        glVertex3f(x+w, sky-upper_pipe_height, 0);
+        glVertex3f(x+w, sky, 0);
     glEnd();
 }
 
@@ -33,8 +50,15 @@ void Obstacle::move(){
 
 void Obstacle::reset(){
     x = width/2;
-    do{
-        ht = std::rand() % (200);
-    }while(ht < 5);
-    std::cout << "obstacle height: " << ht << std::endl;
+    int min, max;
+
+    min = 50;
+    max = (height + ground) * 0.7;
+    bottom_pipe_height = std::rand() % (max - min) + min;
+
+    min = (height + ground) - (bottom_pipe_height + 2*difficulty[0]);
+    max = (height + ground) - (bottom_pipe_height + difficulty[0]);
+    upper_pipe_height = std::rand() % (max - min) + min;
+
+    std::cout << "obstacle height: " << bottom_pipe_height << std::endl;
 }

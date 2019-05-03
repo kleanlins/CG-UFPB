@@ -5,10 +5,10 @@
 
 Skater::Skater(int t) : type(t){
 
-    y = ground;
+    y = -ground;
     x = -130;
 
-    jump_force = 15;
+    jump_force = 20;
     velocity = 0;
     radius = 5;
 
@@ -17,8 +17,8 @@ Skater::Skater(int t) : type(t){
 
 void Skater::draw(){
 
+    glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_QUADS);
-        glColor3f(1.0, 1.0, 1.0);
         glVertex3f(x-radius, y-radius, 0);
         glVertex3f(x-radius, y+radius, 0);
         glVertex3f(x+radius, y+radius, 0);

@@ -2,7 +2,7 @@
 
 ### Skater jumper game created using basic OpenGL capabilities.
 
-### To build this game:
+To build this game:
 
 ```
 mkdir build
