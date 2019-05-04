@@ -11,6 +11,8 @@ Obstacle::Obstacle(int position):
         speed = 2;
         srand( position );
 
+        r = 0, g = 1, b = 0;
+
         int min, max;
 
         min = 50;
@@ -24,7 +26,7 @@ Obstacle::Obstacle(int position):
     }
 
 void Obstacle::draw(){
-        glColor3f(1.0, 0.0, 0.0);
+        glColor3f(r, g, b);
 
     glBegin(GL_QUADS);
         glVertex3f(x-w, ground, 0);
@@ -61,4 +63,18 @@ void Obstacle::reset(){
     upper_pipe_height = std::rand() % (max - min) + min;
 
     std::cout << "obstacle height: " << bottom_pipe_height << std::endl;
+}
+
+void Obstacle::collision(Skater &skater){
+    if((skater.x > x-w && skater.x < x+w) // SIZES
+        && (skater.y < bottom_pipe_height+ground // BOTTOM
+        || skater.y > sky-upper_pipe_height)){ // TOP
+            r = 1;
+            g = 0;
+            std::cout << "HIT" << std::endl;
+        }
+    else{
+            r = 0;
+            g = 1;
+    }
 }

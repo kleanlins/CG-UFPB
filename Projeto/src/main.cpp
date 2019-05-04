@@ -12,8 +12,8 @@
 
 Skater skater(1);
 Obstacle obstacle(200);
-Obstacle obstacle2(328);
-Obstacle obstacle3(456);
+Obstacle obstacle2(200 + (385/3));
+Obstacle obstacle3(200 + (385/3)*2);
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT);
@@ -43,6 +43,11 @@ void update(){
     obstacle.move();
     obstacle2.move();
     obstacle3.move();
+
+    obstacle.collision(skater);
+    obstacle2.collision(skater);
+    obstacle3.collision(skater);
+
     glutPostRedisplay();
     std::this_thread::sleep_for(std::chrono::milliseconds(17));
 }
