@@ -17,7 +17,7 @@ public:
     Obstacle(int position);
 
     void draw();
-    void move();
+    void move(int &points);
     void reset();
 
     void collision(Bird &bird);

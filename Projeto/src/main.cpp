@@ -10,6 +10,8 @@
 #include "bird.h"
 #include "obstacle.h"
 
+int points = 0;
+
 Bird bird(1);
 Obstacle obstacle(200);
 Obstacle obstacle2(200 + (385/3));
@@ -19,7 +21,8 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
 
-    drawAxis();
+    // drawAxis();
+    drawEnvironment();
 
     bird.draw();
     obstacle.draw();
@@ -39,9 +42,9 @@ void init(){
 // update treats all calculus data and updates the entities.
 void update(){
     bird.update();
-    obstacle.move();
-    obstacle2.move();
-    obstacle3.move();
+    obstacle.move(points);
+    obstacle2.move(points);
+    obstacle3.move(points);
 
     obstacle.collision(bird);
     obstacle2.collision(bird);
@@ -55,7 +58,7 @@ void keyboard(unsigned char k, int x, int y){
     switch(k){
         case 'W':
         case 'w':
-            std::cout << "JUMP\n";
+            // std::cout << "JUMP\n";
             bird.jump();
             glutIdleFunc(update);
             break;

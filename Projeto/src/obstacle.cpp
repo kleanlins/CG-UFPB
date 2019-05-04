@@ -25,13 +25,19 @@ Obstacle::Obstacle(int position):
     }
 
 void Obstacle::draw(){
-        glColor3f(r, g, b);
-
+        
+    glColor3f(r, g, b);
     glBegin(GL_QUADS);
         glVertex3f(x-w, ground, 0);
         glVertex3f(x-w, ground+bottom_pipe_height, 0);
         glVertex3f(x+w, ground+bottom_pipe_height, 0);
         glVertex3f(x+w, ground, 0);
+    glEnd();
+    glBegin(GL_QUADS);
+        glVertex3f(x-w-5, ground+bottom_pipe_height, 0);
+        glVertex3f(x-w-5, ground+bottom_pipe_height-10, 0);
+        glVertex3f(x+w+5, ground+bottom_pipe_height-10, 0);
+        glVertex3f(x+w+5, ground+bottom_pipe_height, 0);
     glEnd();
 
     glBegin(GL_QUADS);
@@ -40,11 +46,19 @@ void Obstacle::draw(){
         glVertex3f(x+w, sky-upper_pipe_height, 0);
         glVertex3f(x+w, sky, 0);
     glEnd();
+    glBegin(GL_QUADS);
+        glVertex3f(x-w-5, sky-upper_pipe_height, 0);
+        glVertex3f(x-w-5, sky-upper_pipe_height+10, 0);
+        glVertex3f(x+w+5, sky-upper_pipe_height+10, 0);
+        glVertex3f(x+w+5, sky-upper_pipe_height, 0);
+    glEnd();
 }
 
-void Obstacle::move(){
+void Obstacle::move(int &points){
     x -= speed;
     if(x < -(width/2) - w/2){
+        points++;
+        std::cout << points << std::endl;
         reset();
     }
 }
@@ -70,7 +84,7 @@ void Obstacle::collision(Bird &bird){
         || bird.y > sky-upper_pipe_height)){ // TOP
             r = 1;
             g = 0;
-            std::cout << "HIT" << std::endl;
+            // std::cout << "HIT" << std::endl;
         }
     else{
             r = 0;
