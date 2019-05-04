@@ -1,21 +1,21 @@
-#include "skater.h"
+#include "bird.h"
 #include "gameconf.h"
 
 #include <iostream>
 
-Skater::Skater(int t) : type(t){
+Bird::Bird(int t) : type(t){
 
     y = -ground;
-    x = -130;
+    x = ground;
 
     jump_force = 20;
     velocity = 0;
     radius = 5;
 
-    std::cout << "Skater created.\n" ;
+    std::cout << "Bird created.\n" ;
 }
 
-void Skater::draw(){
+void Bird::draw(){
 
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_QUADS);
@@ -27,15 +27,15 @@ void Skater::draw(){
 
 }
 
-void Skater::run(){
+void Bird::run(){
     
 }
 
-void Skater::jump(){
+void Bird::jump(){
     velocity += -gravity * jump_force;
 }
 
-void Skater::update(){
+void Bird::update(){
     velocity += gravity;
     y += velocity;
 
@@ -43,8 +43,6 @@ void Skater::update(){
         y = height/2 - radius;
         velocity = 0;
     }
-
-    // std::cout << y << "\t" << velocity << std::endl;
 
     if(y <= ground){
         y = ground;

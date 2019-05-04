@@ -7,10 +7,10 @@
 
 // user made models
 #include "gameconf.h"
-#include "skater.h"
+#include "bird.h"
 #include "obstacle.h"
 
-Skater skater(1);
+Bird bird(1);
 Obstacle obstacle(200);
 Obstacle obstacle2(200 + (385/3));
 Obstacle obstacle3(200 + (385/3)*2);
@@ -21,7 +21,7 @@ void display(){
 
     drawAxis();
 
-    skater.draw();
+    bird.draw();
     obstacle.draw();
     obstacle2.draw();
     obstacle3.draw();
@@ -34,19 +34,18 @@ void init(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-width/2, width/2, -height/2, height/2, -1.0, 0.0);
-
 }
 
-// update makes the screen update itself after a predefined time.
+// update treats all calculus data and updates the entities.
 void update(){
-    skater.update();
+    bird.update();
     obstacle.move();
     obstacle2.move();
     obstacle3.move();
 
-    obstacle.collision(skater);
-    obstacle2.collision(skater);
-    obstacle3.collision(skater);
+    obstacle.collision(bird);
+    obstacle2.collision(bird);
+    obstacle3.collision(bird);
 
     glutPostRedisplay();
     std::this_thread::sleep_for(std::chrono::milliseconds(17));
@@ -57,7 +56,7 @@ void keyboard(unsigned char k, int x, int y){
         case 'W':
         case 'w':
             std::cout << "JUMP\n";
-            skater.jump();
+            bird.jump();
             glutIdleFunc(update);
             break;
         case 'q':
@@ -71,7 +70,7 @@ int main(int argc, char **argv){
     glutInitDisplayMode( GLUT_SINGLE );
     glutInitWindowSize(width, height);
     glutInitWindowPosition(300,100);
-    glutCreateWindow("Skater");
+    glutCreateWindow("bird");
     init();
 
     glutDisplayFunc(display);

@@ -1,11 +1,11 @@
-#ifndef _SKATER_H_
-#define _SKATER_H_
+#ifndef _BIRD_H_
+#define _BIRD_H_
 
 #include "GL/glut.h"
 
-class Skater {
+class Bird {
 private:
-    int type; // selects one of the three available skater types
+    int type; // selects one of the three available Bird types
 
     float jump_force;
     float velocity;
@@ -14,7 +14,7 @@ private:
 public:
     float x, y;
 
-    Skater(int t);
+    Bird(int t);
 
     void draw();
     void run();
@@ -23,4 +23,4 @@ public:
     void update();
 };
 
-#endif // _SKATER_H_
+#endif // _BIRD_H_

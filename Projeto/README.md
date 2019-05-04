@@ -1,6 +1,6 @@
-# SKATER GAME
+# FLAPPY GAME
 
-### Skater jumper game created using basic OpenGL capabilities.
+### Flappy bird game created using basic OpenGL capabilities.
 
 To build this game:
 
@@ -21,5 +21,5 @@ make
 ```
 
 ```
-./skater
+./flappy
 ```

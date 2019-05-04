@@ -1,5 +1,4 @@
 #include "GL/glut.h"
-#include <ctime>
 #include <iostream>
 
 #include "gameconf.h"
@@ -65,10 +64,10 @@ void Obstacle::reset(){
     std::cout << "obstacle height: " << bottom_pipe_height << std::endl;
 }
 
-void Obstacle::collision(Skater &skater){
-    if((skater.x > x-w && skater.x < x+w) // SIZES
-        && (skater.y < bottom_pipe_height+ground // BOTTOM
-        || skater.y > sky-upper_pipe_height)){ // TOP
+void Obstacle::collision(Bird &bird){
+    if((bird.x > x-w && bird.x < x+w) // SIZES
+        && (bird.y < bottom_pipe_height+ground // BOTTOM
+        || bird.y > sky-upper_pipe_height)){ // TOP
             r = 1;
             g = 0;
             std::cout << "HIT" << std::endl;

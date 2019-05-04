@@ -1,7 +1,7 @@
 #ifndef _OBSTACLE_H_
 #define _OBSTACLE_H_
 
-#include "skater.h"
+#include "bird.h"
 
 class Obstacle{
 private:
@@ -20,7 +20,7 @@ public:
     void move();
     void reset();
 
-    void collision(Skater &skater);
+    void collision(Bird &bird);
 
 };
 
