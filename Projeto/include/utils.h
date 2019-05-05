@@ -78,4 +78,11 @@ void drawEnvironment(){
     
 }
 
+void renderBitmap(float x, float y, void *font, char *string){
+    char *c;
+    glRasterPos2f(x, y);
+    for(char *c=string; *c != '\0'; c++)
+        glutBitmapCharacter(font, *c);
+}
+
 #endif // _UTILS_H_

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <string>
 #include "utils.h"
 
 // user made models
@@ -16,21 +17,6 @@ Bird bird(1);
 Obstacle obstacle(200);
 Obstacle obstacle2(200 + (385/3));
 Obstacle obstacle3(200 + (385/3)*2);
-
-void display(){
-    glClear(GL_COLOR_BUFFER_BIT);
-    glMatrixMode(GL_MODELVIEW);
-
-    // drawAxis();
-    drawEnvironment();
-
-    bird.draw();
-    obstacle.draw();
-    obstacle2.draw();
-    obstacle3.draw();
-    
-    glFlush();
-}
 
 void init(){
     glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -65,6 +51,30 @@ void keyboard(unsigned char k, int x, int y){
         case 'q':
             exit(0);
     }
+}
+
+void score(){
+    glColor3f(1, 1, 1);
+    char buf[100] = {0};
+    sprintf(buf, std::to_string(points).c_str());
+    renderBitmap(170, 280, GLUT_BITMAP_TIMES_ROMAN_24, buf);
+}
+
+void display(){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glMatrixMode(GL_MODELVIEW);
+
+    // drawAxis();
+    drawEnvironment();
+
+    bird.draw();
+    obstacle.draw();
+    obstacle2.draw();
+    obstacle3.draw();
+
+    score();
+    
+    glFlush();
 }
 
 int main(int argc, char **argv){

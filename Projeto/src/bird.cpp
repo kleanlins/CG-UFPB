@@ -17,12 +17,16 @@ Bird::Bird(int t) : type(t){
 
 void Bird::draw(){
 
-    glColor3f(1.0, 1.0, 1.0);
-    glBegin(GL_QUADS);
-        glVertex3f(x-radius, y-radius, 0);
-        glVertex3f(x-radius, y+radius, 0);
-        glVertex3f(x+radius, y+radius, 0);
-        glVertex3f(x+radius, y-radius, 0);
+    glColor3f(0, 0, 0);
+    glBegin(GL_TRIANGLES);
+        glVertex3f(x, y+radius, 0);
+        glVertex3f(x-15, y+radius+5, 0);
+        glVertex3f(x, y-radius, 0);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glVertex3f(x, y+radius, 0);
+        glVertex3f(x+15, y+radius+5, 0);
+        glVertex3f(x, y-radius, 0);
     glEnd();
 
 }
