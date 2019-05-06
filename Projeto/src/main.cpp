@@ -48,6 +48,12 @@ void keyboard(unsigned char k, int x, int y){
             bird.jump();
             glutIdleFunc(update);
             break;
+        case 'r':
+            points = 0;
+            obstacle.x = 200;
+            obstacle2.x = 200 + (385/3);
+            obstacle3.x = 200 + (385/3)*2;
+            break;
         case 'q':
             exit(0);
     }
@@ -83,7 +89,7 @@ int main(int argc, char **argv){
     glutInitDisplayMode( GLUT_SINGLE );
     glutInitWindowSize(width, height);
     glutInitWindowPosition(300,100);
-    glutCreateWindow("bird");
+    glutCreateWindow("Flappy");
     init();
 
     glutDisplayFunc(display);

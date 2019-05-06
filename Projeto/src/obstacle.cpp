@@ -79,12 +79,14 @@ void Obstacle::reset(){
 }
 
 void Obstacle::collision(Bird &bird){
-    if((bird.x > x-w && bird.x < x+w) // SIZES
+    if((bird.x > x-w && bird.x < x+w) // SIDES
         && (bird.y < bottom_pipe_height+ground // BOTTOM
         || bird.y > sky-upper_pipe_height)){ // TOP
             r = 1;
             g = 0;
             // std::cout << "HIT" << std::endl;
+            // exit(0);
+            glutIdleFunc(NULL);
         }
     else{
             r = 0;
